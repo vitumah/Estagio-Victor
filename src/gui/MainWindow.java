@@ -15,10 +15,11 @@ public class MainWindow extends JFrame
 	
 	private void initUI()
 	{
-		setTitle("Input for Norm");
+		setTitle("Input for New Norm");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT);
 		setLocationRelativeTo(null);
+		setResizable(false);
 		setFocusable(true);
 		setVisible(true);
 		
