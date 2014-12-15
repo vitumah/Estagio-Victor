@@ -41,7 +41,7 @@ public class NormInputPanel extends JPanel implements Runnable
         add( new JTextField(23) );
         
         add( new JLabel("Norm Constraint: ") );
-        String[] constraits = {"Before", "Between", "After" };
+        String[] constraits = {"Before ", "Between ", "After            " };
         
         ButtonGroup radioGroupConstraits = new ButtonGroup();
         for(String name : constraits) 
@@ -51,6 +51,14 @@ public class NormInputPanel extends JPanel implements Runnable
 			add(button);
 		}
         
+        add( new JLabel("Begin: "));
+        add( new JTextField(10) );
+        
+        add( new JLabel("    End: ") );
+        add( new JTextField(10) );
+        
+        add( new JLabel("                                        "
+        		+ "                                              ") );
         add( new Button("Create Norm") );
 	}
 	
