@@ -1,8 +1,10 @@
 package gui;
 
 import java.awt.Button;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
@@ -14,62 +16,50 @@ public class NormInputPanel extends JPanel implements Runnable
 {
 	public NormInputPanel()
 	{
-		GridBagLayout gridbag = new GridBagLayout();
-        setLayout(gridbag);
+		//GridLayout gridbag = new GridLayout(3, 3);
+		FlowLayout flow = new FlowLayout();
+		setLayout(flow);
+        //setLayout(gridbag);
         
-        GridBagConstraints c = new GridBagConstraints();
-        //c.fill = GridBagConstraints.HORIZONTAL;
-        //c.weightx = 0.5;
+        add( new JLabel("Name: ") );
+        add( new JTextField(26) );
+        add( new JLabel("NormType: ") );
         
-        c.gridx = 0;
-        c.gridy = 0;
-        makeLabel("Name: ", gridbag, c);
-        
-        c.gridx = 1;
-        c.gridy = 0;
-        makeTextField(35, gridbag, c);
-        
-        c.gridx = 0;
-        c.gridy = 1;
-        makeLabel("NormType: ", gridbag, c);
-        
-        c.gridx = 1;
-        c.gridy = 1;
-        String[] names = {"Obligation", "Permission", "Prohibited" }; 
-        makeRadioButtons(names, gridbag, c);
-	}
-	
-	protected void makeButton(String name, GridBagLayout layout, GridBagConstraints c) 
-	{
-		Button button = new Button(name);
-		layout.setConstraints(button, c);
-		add(button);
-	}
-	
-	protected void makeTextField(int col, GridBagLayout layout, GridBagConstraints c)
-	{
-		JTextField textField = new JTextField(col);
-		layout.setConstraints(textField, c);
-		add(textField);
-	}
-	
-	protected void makeLabel(String name, GridBagLayout layout, GridBagConstraints c)
-	{
-		JLabel label = new JLabel(name);
-		layout.setConstraints(label, c);
-		add(label);
-	}
-	
-	protected void makeRadioButtons(String[] names, GridBagLayout layout, GridBagConstraints c)
-	{
-		ButtonGroup radioGroup = new ButtonGroup();
-		
-		for(String name : names)
-		{
-			JRadioButton button = new JRadioButton(name, false);
-			radioGroup.add(button);
+        String[] names = {"Obligation", "Permission", "Prohibited" };
+        ButtonGroup radioGroupNormType = new ButtonGroup();
+        for(String name : names) 
+        {
+        	JRadioButton button = new JRadioButton(name, false);
+        	radioGroupNormType.add(button);
 			add(button);
 		}
+        
+        add( new JLabel("Norm Context: ") );
+        add( new JTextField(24) );
+        
+        add( new JLabel("Norm Resource: ") );
+        add( new JTextField(23) );
+        
+        add( new JLabel("Norm Constraint: ") );
+        String[] constraits = {"Before ", "Between ", "After            " };
+        
+        ButtonGroup radioGroupConstraits = new ButtonGroup();
+        for(String name : constraits) 
+        {
+        	JRadioButton button = new JRadioButton(name, false);
+        	radioGroupConstraits.add(button);
+			add(button);
+		}
+        
+        add( new JLabel("Begin: "));
+        add( new JTextField(10) );
+        
+        add( new JLabel("    End: ") );
+        add( new JTextField(10) );
+        
+        add( new JLabel("                                        "
+        		+ "                                              ") );
+        add( new Button("Create Norm") );
 	}
 	
 	@Override
